@@ -13,6 +13,7 @@ import { api } from "~/trpc/server";
 
 export default async function Home() {
   const hello = await api.post.hello({ text: "from tRPC" });
+  console.log("🚀 ~ Home ~ hello:", hello);
   const session = await getServerAuthSession();
 
   return (
@@ -22,7 +23,7 @@ export default async function Home() {
           Chytrá <span className="text-primary">HR</span>
         </h1>
 
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           <Card>
             <CardHeader className="grid grid-cols-[1fr_110px] items-start gap-4 space-y-0">
               <div className="space-y-1">
@@ -67,7 +68,7 @@ export default async function Home() {
           </Link>
         )}
 
-        <div className="flex flex-col items-center gap-2">
+        {/* <div className="flex flex-col items-center gap-2">
           <p className="text-2xl ">
             {hello ? hello.greeting : "Loading tRPC query..."}
           </p>
@@ -83,7 +84,7 @@ export default async function Home() {
               {session ? "Sign out" : "Sign in"}
             </Link>
           </div>
-        </div>
+        </div> */}
       </div>
     </main>
   );
