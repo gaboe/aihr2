@@ -1,4 +1,5 @@
 import { CalculatorIcon, BookAIcon } from "lucide-react";
+import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { Button } from "~/components/ui/button";
 import {
@@ -10,6 +11,7 @@ import {
 
 import { getServerAuthSession } from "~/server/auth";
 import { api } from "~/trpc/server";
+import { AuthButtons } from "./_components/auth/auth-buttons";
 
 export default async function Home() {
   const hello = await api.post.hello({ text: "from tRPC" });
@@ -67,6 +69,8 @@ export default async function Home() {
             <Button>Přejít do aplikace jako {session.user?.name}</Button>
           </Link>
         )}
+
+        {!session && <AuthButtons />}
 
         {/* <div className="flex flex-col items-center gap-2">
           <p className="text-2xl ">

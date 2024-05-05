@@ -1,7 +1,6 @@
 import Link from "next/link";
 import {
   Bell,
-  CircleUser,
   Home,
   LineChart,
   Menu,
@@ -21,17 +20,10 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+
 import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { ThemeToggle } from "../_components/theme/ThemeToggle";
+import { RightDropdown } from "../_components/menu/right-dropdown";
 
 export default function Index() {
   return (
@@ -65,9 +57,6 @@ export default function Index() {
               >
                 <ShoppingCart className="h-4 w-4" />
                 Orders
-                <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
-                  6
-                </Badge>
               </Link>
               <Link
                 href="#"
@@ -201,26 +190,7 @@ export default function Index() {
               </div>
             </form>
           </div>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="secondary" size="icon" className="rounded-full">
-                <CircleUser className="h-5 w-5" />
-                <span className="sr-only">Toggle user menu</span>
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuLabel>My Account</DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem>Settings</DropdownMenuItem>
-              <DropdownMenuItem>Support</DropdownMenuItem>
-              <DropdownMenuSeparator />
-              <Link href={"/api/auth/signout"}>
-                <DropdownMenuItem>Logout</DropdownMenuItem>
-              </Link>
-              <DropdownMenuSeparator />
-              <ThemeToggle />
-            </DropdownMenuContent>
-          </DropdownMenu>
+          <RightDropdown />
         </header>
         <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
           <div className="flex items-center">
