@@ -1,3 +1,11 @@
+import AppLayout from "../_components/layouts/app-layout";
+
 export default function Page() {
-  return <h1>Kalkulacka</h1>;
+  return (
+    <AppLayout>
+      <div className="flex items-center">
+        <h1 className="text-lg font-semibold md:text-2xl">Kalkulačky</h1>
+      </div>
+    </AppLayout>
+  );
 }
